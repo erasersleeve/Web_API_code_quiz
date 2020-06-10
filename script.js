@@ -50,9 +50,10 @@ function quizpage () {
     var buttongroup = document.createElement("div");
     cardBody.appendChild(buttongroup);
     var answer = document.createElement("button");
-    var answer = document.createElement("button");
-    var answer = document.createElement("button");
-    var answer = document.createElement("button");
+    var answer2 = document.createElement("button");
+    var answer3 = document.createElement("button");
+    var answer4 = document.createElement("button");
+    answer.textContent = "c'est une chanson, qui nous rassembler. toi qui m'aimais, et je t'aimais.";
     buttongroup.appendChild(answer);
     buttongroup.appendChild(answer);
     buttongroup.appendChild(answer);
