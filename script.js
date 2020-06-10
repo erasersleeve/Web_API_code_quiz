@@ -38,27 +38,42 @@ startButton.addEventListener("click", function(event) {
 }
 );
 
-function quizpage () {
-    //triggered by the click event, this sets play to true. Therefore, the timer should stop when we go to the scores or home pages. Currently the clock resets at the homepage
-    var play = true;
-    
-        clock ();
-    
-    //we need the page to change the content of the card to a question 
-    cardH1.textContent = "Question 1";
-  //and 4 multiple choice answer buttons
+
+var questions = ["11111111111111111111111111111111111111111", "2222222222222222222222222222222222", "333333333333333333333", "444444444444444444444444444444444444444444444444444444"];
+var answers = [1["11111111111111111111111111111111111111111", "2222222222222222222222222222222222", "333333333333333333333", "444444444444444444444444444444444444444444444444444444"],
+ 2["11111111111111111111111111111111111111111", "2222222222222222222222222222222222", "333333333333333333333", "444444444444444444444444444444444444444444444444444444"],
+ 3["11111111111111111111111111111111111111111", "2222222222222222222222222222222222", "333333333333333333333", "444444444444444444444444444444444444444444444444444444"],
+ 4["11111111111111111111111111111111111111111", "2222222222222222222222222222222222", "333333333333333333333", "444444444444444444444444444444444444444444444444444444"]];
+
+ function quizpage () {
+    //triggered by the click event, this sets play to true. Therefore, the timer should stop when we go to the scores or home pages. Currently the clock resets at the homepage 
+    clock (); 
+    //iterator for arrays
+    i = 0;
+                
     var buttongroup = document.createElement("div");
     cardBody.appendChild(buttongroup);
-    var answer = document.createElement("button");
-    var answer2 = document.createElement("button");
-    var answer3 = document.createElement("button");
-    var answer4 = document.createElement("button");
-    answer.textContent = "c'est une chanson, qui nous rassembler. toi qui m'aimais, et je t'aimais.";
-    buttongroup.appendChild(answer);
-    buttongroup.appendChild(answer);
-    buttongroup.appendChild(answer);
-    buttongroup.appendChild(answer);
-    answer.setAttribute("style", "background-color:#4CAF50; border:1px solid green; color: white; padding 10px 24px; cursor: pointer; width: 50%; display: block;")
+    var ans1 = document.createElement("button");
+    var ans2 = document.createElement("button");
+    var ans3 = document.createElement("button");
+    var ans4 = document.createElement("button");
+    buttongroup.appendChild(ans1);
+    buttongroup.appendChild(ans2);
+    buttongroup.appendChild(ans3);
+    buttongroup.appendChild(ans4);
+    
+    cardH1.textContent = questions[i];
+    //need to select the answer buttons and fill them using the array/object
+   //the first array connects us to our questions and iterator, the inner array has the answer choices
+   //the first answer is always right, but we assign the answers at random to the buttons.
+   //if the button with the first answer is clicked only the next question is presented, if the others are 20 seconds are deducted
+   //when i = questions.length the scores page shows, stopping the timer
+
+    ans1.setAttribute("style", "background-color:#4CAF50; border:1px solid green; color: white; padding 10px 24px; cursor: pointer; width: 50%; display: block;");
+    ans2.setAttribute("style", "background-color:#4CAF50; border:1px solid green; color: white; padding 10px 24px; cursor: pointer; width: 50%; display: block;");
+    ans3.setAttribute("style", "background-color:#4CAF50; border:1px solid green; color: white; padding 10px 24px; cursor: pointer; width: 50%; display: block;");
+    ans4.setAttribute("style", "background-color:#4CAF50; border:1px solid green; color: white; padding 10px 24px; cursor: pointer; width: 50%; display: block;");
+
     // from how to make verticle buttons w3 .btn-group button:not(:last-child) {border-bottom: none;} apparently prevents double borders
     // * Add a background color on hover */.btn-group button:hover {background-color: #3e8e41;}
 
