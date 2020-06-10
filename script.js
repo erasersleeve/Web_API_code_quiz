@@ -39,12 +39,11 @@ startButton.addEventListener("click", function(event) {
 );
 
 
-var questions = ["11111111111111111111111111111111111111111", "2222222222222222222222222222222222", "333333333333333333333", "444444444444444444444444444444444444444444444444444444"];
-var answers = [1["11111111111111111111111111111111111111111", "2222222222222222222222222222222222", "333333333333333333333", "444444444444444444444444444444444444444444444444444444"],
- 2["11111111111111111111111111111111111111111", "2222222222222222222222222222222222", "333333333333333333333", "444444444444444444444444444444444444444444444444444444"],
- 3["11111111111111111111111111111111111111111", "2222222222222222222222222222222222", "333333333333333333333", "444444444444444444444444444444444444444444444444444444"],
- 4["11111111111111111111111111111111111111111", "2222222222222222222222222222222222", "333333333333333333333", "444444444444444444444444444444444444444444444444444444"]];
 
+var questions = ["1", "2", "3", "4"];
+var answers = [
+    { correct: "1", false1 : "2", false2 : "3", false3 : "4"}
+];
  function quizpage () {
     //triggered by the click event, this sets play to true. Therefore, the timer should stop when we go to the scores or home pages. Currently the clock resets at the homepage 
     clock (); 
@@ -61,14 +60,19 @@ var answers = [1["11111111111111111111111111111111111111111", "22222222222222222
     buttongroup.appendChild(ans2);
     buttongroup.appendChild(ans3);
     buttongroup.appendChild(ans4);
-    
+    //not worrying about random yet
     cardH1.textContent = questions[i];
-    //need to select the answer buttons and fill them using the array/object
-   //the first array connects us to our questions and iterator, the inner array has the answer choices
+    ans1.textContent = answers[i].correct;
+    ans2.textContent = answers[i].false1;
+    ans2.textContent = answers[i].false2;
+    ans2.textContent = answers[i].false3;
+    // 
    //the first answer is always right, but we assign the answers at random to the buttons.
    //if the button with the first answer is clicked only the next question is presented, if the others are 20 seconds are deducted
    //when i = questions.length the scores page shows, stopping the timer
+    
 
+   //really need to format these buttons
     ans1.setAttribute("style", "background-color:#4CAF50; border:1px solid green; color: white; padding 10px 24px; cursor: pointer; width: 50%; display: block;");
     ans2.setAttribute("style", "background-color:#4CAF50; border:1px solid green; color: white; padding 10px 24px; cursor: pointer; width: 50%; display: block;");
     ans3.setAttribute("style", "background-color:#4CAF50; border:1px solid green; color: white; padding 10px 24px; cursor: pointer; width: 50%; display: block;");
