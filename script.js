@@ -6,15 +6,20 @@ var cardEl = document.createElement("div");
 var cardH1 = document.createElement("div");
 var cardBody = document.createElement("div");
 var cardFooter = document.createElement("div");
-var playerClock = document.createElement("div");
-var time = 5;
+var time = "";
+//iterator for arrays
+i = 0;
+// var playerClock = document.createElement("div");
+// header.appendChild(playerClock);
+
+
 
 
 // Append all of our elements
 body.appendChild(header);
 body.appendChild(cardEl);
 cardEl.appendChild(cardH1);
-header.appendChild(playerClock)
+
 cardEl.appendChild(cardBody);
 cardEl.appendChild(cardFooter); 
  
@@ -80,13 +85,7 @@ function mainPage () {
 }; 
 function quizpage () {
     clock();
-    
-    var scoreslink = document.createElement("button"); scoreslink.textContent="Highscores";scoreslink.addEventListener("click", function () {highScorespage()});
-    header.appendChild(scoreslink); 
-    
-    //iterator for arrays
-    i = 0;
-    //erase the message from the main page and replace the cardbody content with buttons
+     //erase the message from the main page and replace the cardbody content with buttons
     cardBody.textContent = "";
     var buttongroup = document.createElement("div");
     cardBody.appendChild(buttongroup);
@@ -106,11 +105,11 @@ function quizpage () {
     ans3.textContent = answers[i].false2;
     ans4.textContent = answers[i].false3;
     
-//the first answer is always right, but we assign the answers at random to the buttons.
-//if the button with the first answer is clicked only the next question is presented, if the others are 20 seconds are deducted
-//when i = questions.length the scores page shows, stopping the timer
-    
-//click event for our answer buttons
+    //the first answer is always right, but we assign the answers at random to the buttons.
+    //if the button with the first answer is clicked only the next question is presented, if the others are 20 seconds are deducted
+    //when i = questions.length the scores page shows, stopping the timer
+        
+    //click event for our answer buttons
     ans1.addEventListener("click",answerSelect);
     ans2.addEventListener("click",answerSelect);
     ans3.addEventListener("click",answerSelect);
@@ -133,8 +132,8 @@ function quizpage () {
         // once the last question is answered the buttons disappear and the score page opens
         cardBody.removeChild(buttongroup);
         scorePage ();
-        header.removeChild(scoreslink);
-        };  
+         
+    };
 };
     
 
@@ -213,14 +212,24 @@ function highScorespage () {
     // ;
 };
 function clock() {
+    time = 5;
+    var playerClock = document.createElement("div");
+    header.appendChild(playerClock);
+    playerClock.setAttribute("style", "font-size:25px; text-align:center;");
     var timerinterval = setInterval(function() {
         time--;
-        // console.log(time);
+        console.log(i);
         playerClock.textContent = Number(time);
-        if (time <= 0) {
+       //stop timer when quiz is over
+       if (i == questions.length - 1 || time <= 0) {
         clearInterval(timerinterval);   
         header.removeChild(playerClock);
         scorePage ();}
+       //stops timer at 0
+        // if (time <= 0) {
+        // clearInterval(timerinterval);   
+        // header.removeChild(playerClock);
+        // scorePage ();}
     }, 1000);
 };
 mainPage();
@@ -235,11 +244,4 @@ cardEl.setAttribute("style", "margin:auto; width:50%; text-align:center;");
 cardBody.setAttribute("style", "font-size:25px; text-align:center;");
 cardH1.setAttribute("style", "font-size:25px; text-align:center;");
 cardFooter.setAttribute("style", "font-size:25px; text-align:center;");
-playerClock.setAttribute("style", "font-size:25px; text-align:center;");
-
-
-
-
-
-
 
