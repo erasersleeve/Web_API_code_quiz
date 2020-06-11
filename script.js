@@ -1,5 +1,4 @@
 //Start page elements
-
 var body = document.body;
 var header = document.createElement("h1");
 var cardEl = document.createElement("div");
@@ -9,20 +8,12 @@ var cardFooter = document.createElement("div");
 var time = "";
 //iterator for arrays
 i = 0;
-// var playerClock = document.createElement("div");
-// header.appendChild(playerClock);
-
-
-
-
 // Append all of our elements
 body.appendChild(header);
 body.appendChild(cardEl);
 cardEl.appendChild(cardH1);
-
 cardEl.appendChild(cardBody);
 cardEl.appendChild(cardFooter); 
- 
 
 var questions = ["First Question", "Second Question", "Third Question", "Fourth Question"];
 var answers = [
@@ -84,6 +75,7 @@ function mainPage () {
     
 }; 
 function quizpage () {
+    i = 0;
     clock();
      //erase the message from the main page and replace the cardbody content with buttons
     cardBody.textContent = "";
@@ -121,7 +113,7 @@ function quizpage () {
         {
             console.log(event);
             i++;
-            console.log(i);
+            // console.log(i);
             cardH1.textContent = questions[i];
             ans1.textContent = answers[i].correct;
             ans2.textContent = answers[i].false1;
@@ -131,7 +123,6 @@ function quizpage () {
         else{
         // once the last question is answered the buttons disappear and the score page opens
         cardBody.removeChild(buttongroup);
-        scorePage ();
          
     };
 };
@@ -218,18 +209,13 @@ function clock() {
     playerClock.setAttribute("style", "font-size:25px; text-align:center;");
     var timerinterval = setInterval(function() {
         time--;
-        console.log(i);
+        // console.log(i);
         playerClock.textContent = Number(time);
-       //stop timer when quiz is over
+       //stop timer when quiz (either time = 0 or all questions have been answered)
        if (i == questions.length - 1 || time <= 0) {
         clearInterval(timerinterval);   
         header.removeChild(playerClock);
         scorePage ();}
-       //stops timer at 0
-        // if (time <= 0) {
-        // clearInterval(timerinterval);   
-        // header.removeChild(playerClock);
-        // scorePage ();}
     }, 1000);
 };
 mainPage();
