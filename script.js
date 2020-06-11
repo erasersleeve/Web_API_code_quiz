@@ -16,43 +16,15 @@ cardEl.appendChild(cardBody);
 cardEl.appendChild(cardFooter); 
 
 var questions = ["First Question", "Second Question", "Third Question", "Fourth Question"];
+
 var answers = [
-    { correct: "1", false1 : "2", false2 : "3", false3 : "4"},
-    { correct: "11", false1 : "22", false2 : "33", false3 : "44"},
-    { correct: "111", false1 : "222", false2 : "333", false3 : "444"},
-    { correct: "1111", false1 : "2222", false2 : "3333", false3 : "44444"},
+    { a: "1", b: "2", c: "3", d: "4"},
+    { a: "11", b: "22", c: "33", d: "44"},
+    { a: "111",  b: "222", c: "333", d: "444"},
+    { a: "1111", b: "2222", c: "3333", d: "4444"},
 ];
-//doing this instead might workout better, its less confusing.. https://www.sitepoint.com/simple-javascript-quiz/
-// var quiz = [{ 
-//     question: "",
-//     answers: { 
-//         a: "",
-//         b: "",
-//         c: "",
-//         d: "",
-//     },
-//     question: "",
-//     answers: { 
-//         a: "",
-//         b: "",
-//         c: "",
-//         d: "",
-//     },
-//     question: "",
-//     answers: { 
-//         a: "",
-//         b: "",
-//         c: "",
-//         d: "",
-//     },
-//     question: "",
-//     answers: { 
-//         a: "",
-//         b: "",
-//         c: "",
-//         d: "",
-//     }   
-// }]
+
+var leader = [];
 //Our functions
 
 
@@ -89,42 +61,74 @@ function quizpage () {
     buttongroup.appendChild(ans2);
     buttongroup.appendChild(ans3);
     buttongroup.appendChild(ans4);
+    
+    function answercontent () {
+        cardH1.textContent = questions[i];
+        ans1.textContent = answers[i].a;
+        ans2.textContent = answers[i].b;
+        ans3.textContent = answers[i].c;
+        ans4.textContent = answers[i].d;
+    };
+    answercontent();
     //not worrying about random yet
     //group these buttons together
-    cardH1.textContent = questions[i];
-    ans1.textContent = answers[i].correct;
-    ans2.textContent = answers[i].false1;
-    ans3.textContent = answers[i].false2;
-    ans4.textContent = answers[i].false3;
+    
+    
     
     //the first answer is always right, but we assign the answers at random to the buttons.
     //if the button with the first answer is clicked only the next question is presented, if the others are 20 seconds are deducted
     //when i = questions.length the scores page shows, stopping the timer
         
     //click event for our answer buttons
-    ans1.addEventListener("click",answerSelect);
-    ans2.addEventListener("click",answerSelect);
-    ans3.addEventListener("click",answerSelect);
-    ans4.addEventListener("click",answerSelect);
+    
 
-    function answerSelect (event) {
+    
+        if (i == 0) {
         
-        if (i<(questions.length-1))
-        {
-            console.log(event);
+            ans1.addEventListener("click",answerSelectinvalid);
+            ans2.addEventListener("click",answerSelectvalid);
+            ans3.addEventListener("click",answerSelectinvalid);
+            ans4.addEventListener("click",answerSelectinvalid);
+        };
+        if (i == 1) {
+            ans1.addEventListener("click",answerSelectinvalid);
+            ans2.addEventListener("click",answerSelectinvalid);
+            ans3.addEventListener("click",answerSelectinvalid);
+            ans4.addEventListener("click",answerSelectvalid);
+        };
+        if (i == 2) {
+            ans1.addEventListener("click",answerSelectvalid);
+            ans2.addEventListener("click",answerSelectinvalid);
+            ans3.addEventListener("click",answerSelectinvalid);
+            ans4.addEventListener("click",answerSelectinvalid);
+        };
+        if (i == 3) {
+            ans1.addEventListener("click",answerSelectinvalid);
+            ans2.addEventListener("click",answerSelectinvalid);
+            ans3.addEventListener("click",answerSelectvalid);
+            ans4.addEventListener("click",answerSelectinvalid);
+        };
+    function answerSelectvalid (event) {
+        if (i<(questions.length-1)) {
             i++;
-            // console.log(i);
-            cardH1.textContent = questions[i];
-            ans1.textContent = answers[i].correct;
-            ans2.textContent = answers[i].false1;
-            ans3.textContent = answers[i].false2;
-            ans4.textContent = answers[i].false3;
+            answercontent();
+        }
+        
+    };    
+    function answerSelectinvalid (event) {
+        
+        if (i<(questions.length-1)) {  
+            i++;
+            time-=20;
+            answercontent();
         }
         else{
         // once the last question is answered the buttons disappear and the score page opens
         cardBody.removeChild(buttongroup);
          
     };
+
+
 };
     
 
@@ -151,17 +155,67 @@ function scorePage () {
         var scorebtn = document.createElement("button");
         scorebtn.textContent = "Go to Leaderboards";
         cardBody.appendChild(scorebtn);
+        var leaderList = "#leaderList";
         
+    
+    
+    // init();
+    // function renderLeaders() {
+    //     // Clear leaderList element and update leaderCountSpan
+    //     leaderList.innerHTML = "";
+    //     leaderCountSpan.textContent = leader.length;
+      
+    //     // Render a new li for each todo
+    //     for (var i = 0; i < leader.length; i++) {
+    //       var leader = leader[i];
+      
+    //       var li = document.createElement("li");
+    //       li.textContent = leader;
+    //       li.setAttribute("data-index", i);
+      
+    //       leaderList.appendChild(li);
+    //     }
+    //   }
+    // function init() {
+    //     // Write code here to check if there are todos in localStorage
+    //     // If so, parse the value from localStorage and assign it to the todos variable
+    //     var templeaders = localStorage.getItem("leader");
+        
+    //     templeaders = JSON.parse(templeaders);
+        
+    //     console.log(templeaders);
+        
+    //     leader = templeaders;
+        
+    //     // Render leader to the DOM
+    //     renderLeaders();
+    //     }
+    //     //stringify array and save to leader
+    // function storeLeaders () {
+    //     localStorage.setItem("leader", JSON.stringify(leader));
+    // };
+
+    // renderLeaders();
+    // storeLeaders();
+
+
 
     scorebtn.addEventListener("click", function(event) {
         console.log(event);  
         // create user object from submission
-        var leader = {
+        var allLeader = [];
+        var savedLeaders = localStorage.getItem("leader");
+        if (savedLeaders !== null) {
+            allLeader = JSON.parse(savedLeaders);
+        } 
+        var leader = {  
             name: leaderinput.value,
             score: time
         };
+        allLeader.push(leader);
+        
         console.log(leader);
-        localStorage.setItem("leader", JSON.stringify(leader));
+        localStorage.setItem("leader", JSON.stringify(allLeader));
         cardBody.removeChild(leaderinput);
         cardBody.removeChild(scorebtn);
         
@@ -169,41 +223,37 @@ function scorePage () {
         
         
     })
-    
 };
 function highScorespage () {
     cardH1.textContent = "Leaders";
     cardBody.textContent = "";
     var leaderboard = document.createElement("ol");
+    leaderboard.setAttribute("class", "leaderList")
     cardBody.appendChild(leaderboard);
     var homebutton = document.createElement("button");
-    //button to refresh page, therefore taking us to main page.
+    
     homebutton.textContent = "Back to Main"
     cardFooter.appendChild(homebutton);
+    
+    //original local storage. only held one entry
     var localleader = JSON.parse(localStorage.getItem("leader"));
+     for (i=0; i<localleader.length; i++) {
+        var listitem = document.createElement("li");
+        listitem.textContent = localleader[i].name + ":     " + localleader[i].score;    
+        leaderboard.appendChild(listitem);
+     }
     
-    var listitem = document.createElement("li");
-    listitem.textContent = localleader.name + ":     " + localleader.score;    
-    leaderboard.appendChild(listitem);
     
-    homebutton.addEventListener("click", function () { cardFooter.removeChild(homebutton); cardBody.removeChild(leaderboard); mainPage()});
+    homebutton.addEventListener("click", function () {mainPage(), cardFooter.removeChild(homebutton); cardBody.removeChild(leaderboard)});
 
     
-
-    
-    
-
-    //make a function to create list points and fill them with stored data
-    //if there is stored data then it makes a list and then populates it
-
     // //get the leader data
-    // var leaderboard = JSON.parse(localStorage.getItem("leader"));
-    // var scoreboardbby = leaderboard.name + ":    " + leaderboard.score;
-    // console.log(scoreboardbby);
+    var leaderboard = JSON.parse(localStorage.getItem("leader"));
+
     // ;
 };
 function clock() {
-    time = 5;
+    time = 80;
     var playerClock = document.createElement("div");
     header.appendChild(playerClock);
     playerClock.setAttribute("style", "font-size:25px; text-align:center;");
@@ -231,3 +281,4 @@ cardBody.setAttribute("style", "font-size:25px; text-align:center;");
 cardH1.setAttribute("style", "font-size:25px; text-align:center;");
 cardFooter.setAttribute("style", "font-size:25px; text-align:center;");
 
+// Check this out for bubbling https://gomakethings.com/attaching-multiple-elements-to-a-single-event-listener-in-vanilla-js/
