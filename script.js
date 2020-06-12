@@ -6,6 +6,7 @@ var cardH1 = document.createElement("div");
 var cardBody = document.createElement("div");
 var cardFooter = document.createElement("div");
 var time = "";
+var scoreslink = document.createElement("button");
 
 header.className+= "navbar navbar-light bg-light";
 cardH1.className+="h1";
@@ -32,12 +33,14 @@ var answers = [
 
 var leader = [];
 //Our functions
-
+//Could probably get away with putting the timer and the score link on global and hide them when they aren't necessary.
 
 
 function mainPage () {
     
-    var scoreslink = document.createElement("button"); scoreslink.textContent="Highscores";scoreslink.addEventListener("click", function () {highScorespage()});
+    
+     scoreslink.textContent="Highscores";
+    scoreslink.addEventListener("click", function () {cardFooter.removeChild(startButton); header.removeChild(scoreslink); highScorespage()});
     scoreslink.className+= "highscorebtn btn btn-outline-dark mr-auto";
     header.appendChild(scoreslink); 
     var startButton = document.createElement("button");
@@ -86,6 +89,8 @@ function quizpage () {
         ans2.textContent = answers[i].b;
         ans3.textContent = answers[i].c;
         ans4.textContent = answers[i].d;
+        console.log(`i inside answer${i}`);
+        updateEventlisteners();
     };
     answercontent();
     //not worrying about random yet
@@ -93,33 +98,40 @@ function quizpage () {
     //click event for our answer buttons
     
 
-    
-        if (i == 0) {
-        
+    function updateEventlisteners () {
+        if (i === 0) {
+        console.log("YES");
             ans1.addEventListener("click",answerSelectinvalid);
             ans2.addEventListener("click",answerSelectinvalid);
             ans3.addEventListener("click",answerSelectvalid);
             ans4.addEventListener("click",answerSelectinvalid);
         };
-        if (i == 1) {
-            ans1.addEventListener("click",answerSelectinvalid);
+        if (i === 1) {
+            console.log("YES");
+            
+            ans2.removeEventListener("click",answerSelectinvalid);
+            ans3.removeEventListener("click",answerSelectvalid);
             ans2.addEventListener("click",answerSelectvalid);
             ans3.addEventListener("click",answerSelectinvalid);
-            ans4.addEventListener("click",answerSelectinvalid);
+            
         };
-        if (i == 2) {
+        if (i === 2) {
+            console.log("YES");
+            ans1.removeEventListener("click",answerSelectinvalid);
+            ans2.removeEventListener("click",answerSelectvalid);
             ans1.addEventListener("click",answerSelectvalid);
             ans2.addEventListener("click",answerSelectinvalid);
-            ans3.addEventListener("click",answerSelectinvalid);
-            ans4.addEventListener("click",answerSelectinvalid);
         };
-        if (i == 3) {
-            ans1.addEventListener("click",answerSelectinvalid);
-            ans2.addEventListener("click",answerSelectinvalid);
+        if (i === 3) {
+            ans3.removeEventListener("click",answerSelectinvalid);
+            ans1.removeEventListener("click",answerSelectvalid);
             ans3.addEventListener("click",answerSelectvalid);
-            ans4.addEventListener("click",answerSelectinvalid);
+            ans1.addEventListener("click",answerSelectinvalid);
         };
-    function answerSelectvalid () {
+    };
+        
+    function answerSelectvalid (event) {
+        console.log(event);
         if (i<(questions.length)) {
             i++;
             answercontent();
@@ -127,7 +139,8 @@ function quizpage () {
             console.log(i);
         }
     };    
-    function answerSelectinvalid () {
+    function answerSelectinvalid (event) {
+        console.log(event);
         
         if (i<(questions.length)) {  
             i++;
@@ -192,12 +205,14 @@ function scorePage () {
     })
 };
 function highScorespage () {
+    
     cardH1.textContent = "Leaders";
     cardBody.textContent = "";
-    var leaderboard = document.createElement("ol");
+    var leaderboard = document.createElement("ul");
     leaderboard.setAttribute("class", "leaderList")
     cardBody.appendChild(leaderboard);
     var homebutton = document.createElement("button");
+    homebutton.className+= "homebutton btn btn-outline-dark";
     
     homebutton.textContent = "Back to Main"
     cardFooter.appendChild(homebutton);
