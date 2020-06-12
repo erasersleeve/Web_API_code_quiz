@@ -33,7 +33,7 @@ var answers = [
 
 var leader = [];
 //Our functions
-//Could probably get away with putting the timer and the score link on global and hide them when they aren't necessary.
+//Could probably get away with putting the timer and the score link on global and hide them when they aren't
 
 
 function mainPage () {
@@ -168,10 +168,10 @@ function quizpage () {
 
 }; 
 function scorePage () {
-        cardH1.textContent = "Your Score";
-        cardBody.textContent = time;
+        cardH1.textContent = "Your Score: " +time;
+        cardBody.textContent = "";
         var leaderinput = document.createElement("input");
-        leaderinput.placeholder = "Put you name or initials here to submit a high score!";
+        leaderinput.placeholder = "Enter your name!";
         cardBody.appendChild(leaderinput);
         var scorebtn = document.createElement("button");
         scorebtn.textContent = "Go to Leaderboards";
