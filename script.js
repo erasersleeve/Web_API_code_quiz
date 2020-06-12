@@ -7,6 +7,23 @@ var cardBody = document.createElement("div");
 var cardFooter = document.createElement("div");
 var time = "";
 var scoreslink = document.createElement("button");
+scoreslink.textContent="Highscores";
+scoreslink.addEventListener("click", function () {highScorespage()});
+scoreslink.className+= "highscorebtn btn btn-outline-dark mr-auto";
+header.appendChild(scoreslink);
+
+
+var startButton = document.createElement("button");
+startButton.textContent = "Get Started!";
+startButton.className = "startButton btn btn-outline-dark";
+cardFooter.appendChild(startButton);
+startButton.addEventListener("click", function(event) {
+    console.log(event);  
+    clock();
+    quizpage ();
+    
+})
+
 
 header.className+= "navbar navbar-light bg-light";
 cardH1.className+="h1";
@@ -37,32 +54,19 @@ var leader = [];
 
 
 function mainPage () {
-    
-    
-     scoreslink.textContent="Highscores";
-    scoreslink.addEventListener("click", function () {cardFooter.removeChild(startButton); header.removeChild(scoreslink); highScorespage()});
-    scoreslink.className+= "highscorebtn btn btn-outline-dark mr-auto";
-    header.appendChild(scoreslink); 
-    var startButton = document.createElement("button");
-    startButton.textContent = "Get Started!";
-    startButton.className = "startButton btn btn-outline-dark";
-    cardFooter.appendChild(startButton);
-    startButton.addEventListener("click", function(event) {
-        console.log(event);  
-        cardFooter.removeChild(startButton);
-        header.removeChild(scoreslink);
-        clock();
-        quizpage ();
-        
-    })
+    document.getElementsByClassName("startButton")[0].style.visibility = "visible";
+    document.getElementsByClassName("highscorebtn")[0].style.visibility = "visible";
+     
+   
     
     cardH1.textContent = "Code Quiz!";
     cardBody.textContent = "Try your best to make it through the test. Each wrong answer reduces your remaining time, so be careful!";
     
 }; 
 function quizpage () {
-    i = 0;
-    
+    document.getElementsByClassName("highscorebtn")[0].style.visibility = "visible";
+    document.getElementsByClassName("startButton")[0].style.visibility = "hidden";
+    i=0;
     questions;
     answers;
      //erase the message from the main page and replace the cardbody content with buttons
@@ -168,6 +172,8 @@ function quizpage () {
 
 }; 
 function scorePage () {
+        document.getElementsByClassName("highscorebtn")[0].style.visibility = "hidden";
+        document.getElementsByClassName("startButton")[0].style.visibility = "hidden";
         cardH1.textContent = "Your Score: " +time;
         cardBody.textContent = "";
         var leaderinput = document.createElement("input");
@@ -205,7 +211,8 @@ function scorePage () {
     })
 };
 function highScorespage () {
-    
+    document.getElementsByClassName("highscorebtn")[0].style.visibility = "hidden";
+    document.getElementsByClassName("startButton")[0].style.visibility = "hidden";
     cardH1.textContent = "Leaders";
     cardBody.textContent = "";
     var leaderboard = document.createElement("ul");
