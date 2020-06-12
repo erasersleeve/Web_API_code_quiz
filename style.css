@@ -1,0 +1,32 @@
+
+
+
+
+
+.ans {
+    background-color:#4CAF50; 
+    border:1px solid green; 
+    color: white; 
+    padding: 10px 24px; 
+    margin:10px;
+    cursor: pointer; 
+    width:100%; 
+    display: block;
+    border-radius: 20px;
+}
+
+.playerClock {
+    font-family: 'Orbitron', sans-serif;
+    float: right;
+}   
+
+.highscorebtn {
+    font-family: 'Orbitron', sans-serif;
+    float: left;
+}
+
+.h1 {
+    font-family: 'Orbitron', sans-serif, ;
+    margin: 10px;
+}
+
