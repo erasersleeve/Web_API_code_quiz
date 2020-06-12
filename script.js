@@ -20,7 +20,7 @@ cardEl.appendChild(cardBody);
 cardEl.appendChild(cardFooter); 
 
 var questions = ["Inside which HTML element do we put the Javascirpt?", 
-"What is the correct JavaScript syntax to change the content of the HTML element below?\n <p id='demo'>This is a demonstration.</p>", 
+"What is the correct JavaScript syntax to change the content of the HTML element:\n <p id='demo'>This is a demonstration.</p>", 
 "Where is the correct place to insert a JavaScript?", 
 "What is the correct syntax for referring to an external script called 'xxx.js'?"];
 
