@@ -10,7 +10,7 @@ To github repo: https://github.com/erasersleeve/Web_API_code_quiz
 ## Screen Shots
 ![1](https://github.com/erasersleeve/Web_API_code_quiz/blob/master/assets/Capture%20d%E2%80%99%C3%A9cran%20(21).png)
 ![2](https://github.com/erasersleeve/Web_API_code_quiz/blob/master/assets/Capture%20d%E2%80%99%C3%A9cran%20(22).png)
-![3](https://github.com/erasersleeve/Web_API_code_quiz/blob/master/assets/Capture%20d%E2%80%99%C3%A9cran%20(23).png)
+![3](https://github.com/erasersleeve/Web_API_code_quiz/blob/master/assets/Capture%20d%E2%80%99%C3%A9cran%20(25).png)
 ![4](https://github.com/erasersleeve/Web_API_code_quiz/blob/master/assets/Capture%20d%E2%80%99%C3%A9cran%20(24).png)
 ## Contributors
 Tim Winters

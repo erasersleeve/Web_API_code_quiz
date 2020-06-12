@@ -176,7 +176,7 @@ function scorePage () {
         var scorebtn = document.createElement("button");
         scorebtn.textContent = "Go to Leaderboards";
         scorebtn.className+= "btn btn-outline-dark";
-        cardBody.appendChild(scorebtn);
+        cardFooter.appendChild(scorebtn);
 
 
 
@@ -197,7 +197,7 @@ function scorePage () {
         console.log(leader);
         localStorage.setItem("leader", JSON.stringify(allLeader));
         cardBody.removeChild(leaderinput);
-        cardBody.removeChild(scorebtn);
+        cardFooter.removeChild(scorebtn);
         
         highScorespage ();
         
